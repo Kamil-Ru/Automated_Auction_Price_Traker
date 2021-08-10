@@ -20,20 +20,6 @@ for item in all_items:
 
     items_checking_text = item.find(name="span", class_="a-size-base-plus a-color-base a-text-normal").get_text()
     items_prize = item.find(name="span", class_="a-price-whole")
-    URL = item.find(name="a", class_="a-link-normal a-text-normal", href=)
-    print(f"URL ====   {URL}")
-    print(type(URL))
-    URL_2 = URL(href=True)
-
-    print(URL_2)
-
-
-    print(item)
-    print(type(item))
-    # position = BeautifulSoup(position, "html.parser")
-
-    print(items_prize)
-    print(type(items_prize))
 
     if items_prize == None:
         items_prize = 10000
@@ -41,10 +27,11 @@ for item in all_items:
         items_prize = items_prize.get_text()
         items_prize = int((items_prize.replace("\xa0", "")).replace(",", ""))
 
-    if items_checking_text.find("3070") > 0 and lowest_prize > items_prize:
+    if items_checking_text.find("3070") > 0 and items_prize < lowest_prize:
         lowest_prize = items_prize
         item_name = items_checking_text
 
-        items_URL = URL
+        URL = (item.find(name="a", class_="a-link-normal a-text-normal")).get('href')
+        items_URL = "https://www.amazon.pl/" + URL
 
 print(f"CENA:{lowest_prize}, \n TEXT: {item_name}, \n LINK: {items_URL}")
