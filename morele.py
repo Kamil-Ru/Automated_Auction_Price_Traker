@@ -8,8 +8,8 @@ headers = {
 
 response = requests.get(URL, headers)
 
-amazon_web_page = response.text
-soup = BeautifulSoup(amazon_web_page, "lxml")
+web_page = response.text
+soup = BeautifulSoup(web_page, "lxml")
 
 all_items = soup.find_all(name="div",
                           class_="cat-product card")
@@ -18,17 +18,17 @@ lowest_price = 10000
 
 for item in all_items:
 
-    items_price = item.find(name="div", class_="price-new")
+    item_price = item.find(name="div", class_="price-new")
 
-    items_price = items_price.get_text().split(",")[0]
-    items_price = int("".join(_ for _ in items_price if _.isdigit()))
-    items_checking_text = item.find(name="a", class_="productLink")
+    item_price = item_price.get_text().split(",")[0]
+    item_price = int("".join(_ for _ in item_price if _.isdigit()))
+    item_checking_text = item.find(name="a", class_="productLink")
 
-    items_checking_text, URL = items_checking_text.get("title"), items_checking_text.get("href")
+    item_checking_text, URL = item_checking_text.get("title"), item_checking_text.get("href")
 
-    if items_checking_text.find("3070") > 0 and items_price < lowest_price:
-        lowest_price = items_price
-        item_name = items_checking_text
+    if item_checking_text.find("3070") > 0 and item_price < lowest_price:
+        lowest_price = item_price
+        item_name = item_checking_text
         items_URL = "https://www.morele.net" + URL
 
 print(f"Price: {lowest_price}\nText: {item_name}\nURL: {items_URL}")
