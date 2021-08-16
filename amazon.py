@@ -38,4 +38,4 @@ def amazon():
             URL = (item.find(name="a", class_="a-link-normal a-text-normal")).get('href')
             items_URL = "https://www.amazon.pl/" + URL
 
-    return {"price": lowest_price, "text": item_name, "url": items_URL}
+    return {"price": lowest_price, "text": item_name, "url": items_URL, "shop": "Amazon"}

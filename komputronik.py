@@ -40,4 +40,4 @@ def komputronik():
         except:
             continue
 
-    return {"price": lowest_price, "text": item_name, "url": items_URL}
+    return {"price": lowest_price, "text": item_name, "url": items_URL, "shop": "Komputronik"}

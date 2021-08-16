@@ -33,4 +33,4 @@ def morele():
             item_name = item_checking_text
             items_URL = "https://www.morele.net" + URL
 
-    return {"price": lowest_price, "text": item_name, "url": items_URL}
+    return {"price": lowest_price, "text": item_name, "url": items_URL, "shop": "Morele"}
