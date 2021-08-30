@@ -5,10 +5,13 @@ from morele import morele
 from msg import send_email, send_SMS
 from data_menager import DataManager
 
-amazon_response = amazon()
-ebay_response = ebay()
-komputronik_response = komputronik()
-morele_response = morele()
+from allegro import Allegro
+
+# amazon_response = amazon()
+# ebay_response = ebay()
+# komputronik_response = komputronik()
+# morele_response = morele()
+
 
 # amazon_response = {'price': 4969, 'text': 'Gigabyte GeForce RTX 3070 Ti GV-N307TGAMING OC-8GD, Karta Graficzna do Gier, 8 GB', 'url': 'https://www.amazon.pl//Gigabyte-GeForce-GV-N307TGAMING-OC-8GD-Graficzna/dp/B095X6RLJW?dchild=1'}
 # ebay_response = {'price': 4331, 'text': 'Zotac Gaming GeForce RTX 3070 Ti Trinity OC 8GB GDDR6X ✅ OVP ✅ Händler Rechnung ', 'url': 'https://www.ebay.pl/itm/265246057611?hash=item3dc1e5a48b%3Ag%3AicYAAOSwafdhAnMw&LH_RPA=1&LH_BIN=1&LH_ItemCondition=1000'}
@@ -17,16 +20,16 @@ morele_response = morele()
 #
 response=[]
 
-response.append(amazon_response)
-response.append(ebay_response)
-response.append(komputronik_response)
-response.append(morele_response)
-
+# response.append(amazon_response)
+# response.append(ebay_response)
+# response.append(komputronik_response)
+# response.append(morele_response)
+"""
 print(amazon_response)
 print(ebay_response)
 print(komputronik_response)
 print(morele_response)
-
+"""
 print(response)
 lowest_price = 10000
 
@@ -37,12 +40,17 @@ for item in response:
         lowest_price = item['price']
         lowest_item = item
 
-save_price = DataManager()
-save_price.post(price=lowest_item['price'], shop=lowest_item['shop'], url=lowest_item['url'])
+#save_price = DataManager()
+#save_price.post(price=lowest_item['price'], shop=lowest_item['shop'], url=lowest_item['url'])
 
-send_email(price=lowest_item['price'], text=lowest_item['text'], url=lowest_item['url'])
+# send_email(price=lowest_item['price'], text=lowest_item['text'], url=lowest_item['url'])
 
-print(f"Text: {lowest_item['text']}\nPrice: {lowest_item['price']}\nURL: {lowest_item['url']}")
+# print(f"Text: {lowest_item['text']}\nPrice: {lowest_item['price']}\nURL: {lowest_item['url']}")
 
-send_SMS(price=lowest_item['price'])
+# send_SMS(price=lowest_item['price'])
 
+
+
+allegro_respond = Allegro()
+
+allegro_respond.get_data()

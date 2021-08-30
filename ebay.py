@@ -26,7 +26,6 @@ def ebay():
         item_price = int(item_price)
 
         items_checking_text = item.find(name="h3", class_="s-item__title").get_text()
-
         URL = item.find(name="a", class_="s-item__link").get("href")
 
         if items_checking_text.find("3070") > 0 and item_price < lowest_price:
