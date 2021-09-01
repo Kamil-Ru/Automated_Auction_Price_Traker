@@ -35,8 +35,8 @@ def komputronik():
                 item_name = items_checking_text
                 items_URL = URL
             else:
-                item_name = None
-                items_URL = None
+                item_name = "None"
+                items_URL = "None"
         except:
             continue
 

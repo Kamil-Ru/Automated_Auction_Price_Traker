@@ -1,16 +1,20 @@
+import pprint
+
 from amazon import amazon
 from ebay import ebay
 from komputronik import komputronik
 from morele import morele
 from msg import send_email, send_SMS
-from data_menager import DataManager
+from data_menager_2 import DataManager
 
 from allegro import Allegro
 
-# amazon_response = amazon()
-# ebay_response = ebay()
-# komputronik_response = komputronik()
-# morele_response = morele()
+amazon_response = amazon()
+ebay_response = ebay()
+komputronik_response = komputronik()
+morele_response = morele()
+allegro = Allegro()
+allegro_response = allegro.get_data()
 
 
 # amazon_response = {'price': 4969, 'text': 'Gigabyte GeForce RTX 3070 Ti GV-N307TGAMING OC-8GD, Karta Graficzna do Gier, 8 GB', 'url': 'https://www.amazon.pl//Gigabyte-GeForce-GV-N307TGAMING-OC-8GD-Graficzna/dp/B095X6RLJW?dchild=1'}
@@ -20,20 +24,13 @@ from allegro import Allegro
 #
 response=[]
 
-# response.append(amazon_response)
-# response.append(ebay_response)
-# response.append(komputronik_response)
-# response.append(morele_response)
-"""
-print(amazon_response)
-print(ebay_response)
-print(komputronik_response)
-print(morele_response)
-"""
-print(response)
+response.append(amazon_response)
+response.append(ebay_response)
+response.append(komputronik_response)
+response.append(morele_response)
+response.append(allegro_response)
+
 lowest_price = 10000
-
-
 
 for item in response:
     if item['price'] < lowest_price:
@@ -45,12 +42,11 @@ for item in response:
 
 # send_email(price=lowest_item['price'], text=lowest_item['text'], url=lowest_item['url'])
 
-# print(f"Text: {lowest_item['text']}\nPrice: {lowest_item['price']}\nURL: {lowest_item['url']}")
+
+pprint.pprint(response)
+print(f"Text: {lowest_item['text']}\nPrice: {lowest_item['price']}\nURL: {lowest_item['url']}")
 
 # send_SMS(price=lowest_item['price'])
 
-
-
-allegro_respond = Allegro()
-
-allegro_respond.get_data()
+send_data = DataManager()
+send_data.send_data(response)
