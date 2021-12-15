@@ -39,7 +39,7 @@ class Allegro:
                     item_name = items_checking_text
                     items_URL = url
 
-            except ValueError:
+            except:
                 print("EMPTY")
 
         self.driver.quit()

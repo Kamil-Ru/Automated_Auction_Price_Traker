@@ -16,8 +16,8 @@ def amazon():
                               class_="sg-col-4-of-12 s-result-item s-asin sg-col-4-of-16 sg-col sg-col-4-of-20")
 
     lowest_price = 10000
-    item_name = None
-    items_URL = None
+    item_name = "None"
+    items_URL = "None"
 
 
     for item in all_items:
